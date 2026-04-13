@@ -1,0 +1,53 @@
+/**
+ * AyahMarker — Ornamental verse number marker (Web version)
+ * Octagonal border with gold styling, matching Mushaf aesthetics.
+ */
+import React from "react";
+
+export default function AyahMarker({ n, size = 32 }) {
+  const vb = "0 0 36 36";
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        verticalAlign: "middle",
+        margin: "0 2px",
+        width: size,
+        height: size,
+      }}
+    >
+      <svg width={size} height={size} viewBox={vb}>
+        <polygon
+          points="18,1 26,5 32,11 32,25 26,31 18,35 10,31 4,25 4,11 10,5"
+          fill="none"
+          stroke="#C5A028"
+          strokeWidth="1.8"
+        />
+        <polygon
+          points="18,5 24,8 28,13 28,23 24,28 18,31 12,28 8,23 8,13 12,8"
+          fill="none"
+          stroke="#C5A028"
+          strokeWidth="0.5"
+          opacity="0.4"
+        />
+        {[
+          [18, 2], [32, 12], [32, 24],
+          [18, 34], [4, 24], [4, 12],
+        ].map(([x, y], i) => (
+          <circle key={i} cx={x} cy={y} r="1.5" fill="#C5A028" opacity="0.6" />
+        ))}
+        <text
+          x="18"
+          y="22"
+          textAnchor="middle"
+          fill="#5C4A1E"
+          fontSize="12"
+          fontWeight="700"
+          fontFamily="Outfit, sans-serif"
+        >
+          {n}
+        </text>
+      </svg>
+    </span>
+  );
+}
